@@ -1,0 +1,6 @@
+{
+	"name": "Paddle",
+	"references": [
+		"Unity.InputSystem"
+	]
+}
