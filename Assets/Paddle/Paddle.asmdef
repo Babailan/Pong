@@ -1,6 +1,7 @@
 {
 	"name": "Paddle",
 	"references": [
-		"Unity.InputSystem"
+		"Unity.InputSystem",
+		"GameField"
 	]
 }
