@@ -1,13 +1,10 @@
 using System;
-using System.Reflection;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 public class PaddleMovement : MonoBehaviour
 {
     [SerializeField] GameObject boundary;
-    
+
     InputAction moveInputAction;
     InputAction omitBallAction;
     SpriteRenderer paddleSprite;
@@ -27,7 +24,6 @@ public class PaddleMovement : MonoBehaviour
     void Update()
     {
         onMoveAction();
-        Debug.DrawLine(Vector2.zero,Vector2.up *5);
         onOmitBall();
     }
 
@@ -47,7 +43,6 @@ public class PaddleMovement : MonoBehaviour
             Vector2 newPosition = transform.position + (new Vector3(move.x, move.y) * speed * Time.deltaTime);
             float paddleHalfHeight = paddleSprite.bounds.size.y / 2;
             float verticalDistanceFromCamera = Mathf.Abs(newPosition.y - Camera.main.transform.position.y) + paddleHalfHeight;
-            Debug.Log((this.boundary.transform.position.y));
             if (verticalDistanceFromCamera > Math.Abs(this.boundary.transform.position.y - (boundarySprite.bounds.size.y / 2)))
             {
                 return;
@@ -59,12 +54,9 @@ public class PaddleMovement : MonoBehaviour
 
     void positionThePaddle()
     {
-        // Todo : Make the paddle at the edge of boundary :3
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        Vector3 position
-        = this.transform.position;
-        position.x = -Math.Abs(GameField.courtWidth - ((spriteRenderer.bounds.size.x) + GameField.courtWidth * 0.01f));
-        this.transform.position = position;
+        //Position the paddle to the edge of the boundary
+        Vector2 newPosition = new Vector2(-Math.Abs(((boundarySprite.bounds.size.x / 2) - (this.paddleSprite.bounds.size.x / 2))), 0);
+        this.transform.position = newPosition;
     }
 
     void OnDrawGizmos()
@@ -74,17 +66,16 @@ public class PaddleMovement : MonoBehaviour
             return;
         }
         SpriteRenderer paddle = GetComponent<SpriteRenderer>();
-        Gizmos.color = Color.softBlue;
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(this.transform.position, paddle.bounds.size.y / 2);
         Gizmos.color = Color.red;
         Vector2 b = (this.ball.transform.position - this.transform.position);
         Gizmos.DrawLine(this.transform.position, new Vector2(this.transform.position.x, this.ball.transform.position.y));
         Gizmos.DrawLine(this.transform.position, new Vector2(this.ball.transform.position.x, this.transform.position.y));
-        float angle = Mathf.Atan2(b.y, b.x);//make it half
-        Vector2 normalized = new Vector2( Mathf.Cos(angle),MathF.Sin(angle)/2)+ new Vector2(this.transform.position.x,this.transform.position.y);
+        float angle = Mathf.Atan2(b.y, b.x);
+        Vector2 normalized = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle) / 2) + new Vector2(this.transform.position.x, this.transform.position.y);
         Gizmos.DrawWireCube(b, Vector2.one);
         Gizmos.DrawLine(this.transform.position, normalized);
-        Gizmos.DrawWireSphere(Vector2.zero,0.5f);
     }
 
 
