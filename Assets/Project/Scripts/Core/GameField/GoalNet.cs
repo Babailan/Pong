@@ -30,6 +30,7 @@ public class GoalNet : MonoBehaviour
             {
                 txtMeshProComponent.SetText(score.ToString());
             }
+            Destroy(collision.gameObject);
         }
     }
     void OnDrawGizmos()
