@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Rigidbody2D rd;
-    [SerializeField] public float speed = 250f;
+    [SerializeField] public float speed = 300f;
     void Start()
     {
         rd = GetComponent<Rigidbody2D>();
