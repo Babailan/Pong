@@ -10,7 +10,7 @@ public class PaddleMovement : MonoBehaviour
     SpriteRenderer boundarySprite;
     [SerializeField] GameObject parentRelative;
     GameObject ball;
-    [SerializeField] bool isControlledByPlayer = false;
+    [SerializeField] bool left = false;
     public float speed = 10f;
     void Start()
     {
@@ -33,7 +33,7 @@ public class PaddleMovement : MonoBehaviour
             Vector2 move = moveInputAction.ReadValue<Vector2>();
             Vector2 newPosition = transform.position + (new Vector3(move.x, move.y) * speed * Time.deltaTime);
             float paddleHalfHeight = paddleSprite.bounds.size.y / 2;
-            float verticalDistanceFromCamera = Mathf.Abs(newPosition.y - Camera.main.transform.position.y) + paddleHalfHeight;
+            float verticalDistanceFromCamera = Mathf.Abs(newPosition.y) + paddleHalfHeight;
             if (verticalDistanceFromCamera > Math.Abs(this.boundary.transform.position.y - (boundarySprite.bounds.size.y / 2)))
             {
                 return;
@@ -47,7 +47,7 @@ public class PaddleMovement : MonoBehaviour
     {
         //Position the paddle to the edge of the boundary
         // if paddle is controlled by player then put it in -x otherwise +x
-        if (isControlledByPlayer)
+        if (left)
         {
             Vector2 newPosition = new Vector2(-Math.Abs(((boundarySprite.bounds.size.x / 2) - (this.paddleSprite.bounds.size.x / 2))), 0);
             this.transform.position = newPosition + new Vector2(parentRelative.transform.position.x,parentRelative.transform.position.y);

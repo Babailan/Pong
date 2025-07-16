@@ -7,9 +7,11 @@ public class Ball : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Rigidbody2D rd;
     [SerializeField] public float speed = 300f;
+    private  AudioSource bounceAudioSource; 
     void Start()
     {
         rd = GetComponent<Rigidbody2D>();
+        bounceAudioSource = GetComponent<AudioSource>();
         MoveInRandomDirection();
     }
 
@@ -23,6 +25,7 @@ public class Ball : MonoBehaviour
             Vector2 redirectVector = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle) / 2);
             rd.linearVelocity = redirectVector.normalized * rd.linearVelocity.magnitude;
         }
+        bounceAudioSource.Play();
     }
 
     public void MoveInRandomDirection()
