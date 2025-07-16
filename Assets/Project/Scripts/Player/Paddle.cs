@@ -6,17 +6,15 @@ public class PaddleMovement : MonoBehaviour
     [SerializeField] GameObject boundary;
 
     InputAction moveInputAction;
-    InputAction omitBallAction;
     SpriteRenderer paddleSprite;
     SpriteRenderer boundarySprite;
     [SerializeField] GameObject parentRelative;
-    [SerializeField] GameObject ball;
+    GameObject ball;
     [SerializeField] bool isControlledByPlayer = false;
     public float speed = 10f;
     void Start()
     {
         moveInputAction = InputSystem.actions.FindActionMap("Player").FindAction("Move");
-        omitBallAction = InputSystem.actions.FindActionMap("Player").FindAction("OmitBall");
         paddleSprite = GetComponent<SpriteRenderer>();
         boundarySprite = boundary.GetComponent<SpriteRenderer>();
         positionThePaddle();
@@ -26,15 +24,6 @@ public class PaddleMovement : MonoBehaviour
     void Update()
     {
         onMoveAction();
-        onOmitBall();
-    }
-
-    private void onOmitBall()
-    {
-        if (omitBallAction.IsPressed())
-        {
-            Debug.Log("hellnah");
-        }
     }
     private void onMoveAction()
     {

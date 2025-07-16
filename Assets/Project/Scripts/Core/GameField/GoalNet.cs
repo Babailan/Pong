@@ -30,7 +30,6 @@ public class GoalNet : MonoBehaviour
                 txtMeshProComponent.SetText(score.ToString());
             }
             Destroy(collision.gameObject);
-            Debug.Log(ResultOverlayScreen);
             ResultOverlayScreen.SetActive(true);
             TitleScreen.GetComponent<TextMeshProUGUI>().text = "you " + (isPlayerGoalNet ? "lose" : "win");
             InputSystem.actions.FindActionMap("Player").Disable();

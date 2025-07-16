@@ -14,15 +14,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "OmitBall",
-                    "type": "Button",
-                    "id": "a727a60c-5530-4558-88db-7398df9d2bd4",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -80,17 +71,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "01ef42c4-846c-4a17-bc3b-37f38cb85c32",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OmitBall",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -101,28 +81,28 @@
             "bindings": []
         },
         {
-            "name": "Game",
-            "id": "858183c3-a3b8-486f-9d89-0111e78d2253",
+            "name": "GameField",
+            "id": "f2c982d2-ecaf-43c3-89a8-7cfa30838027",
             "actions": [
                 {
-                    "name": "Play Again",
-                    "type": "Button",
-                    "id": "69f252f3-db8c-416a-8485-dedf6b031b11",
+                    "name": "PlayAgain",
+                    "type": "Value",
+                    "id": "a6b4c64b-6080-4dd7-bfd4-ee33101fd887",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "6358d0b4-7d72-425b-ac15-af0804aac521",
+                    "id": "8e89a8b0-47f8-4fd2-8797-08e4ed975105",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Play Again",
+                    "action": "PlayAgain",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

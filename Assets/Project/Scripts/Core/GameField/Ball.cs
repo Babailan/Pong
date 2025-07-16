@@ -6,19 +6,13 @@ public class Ball : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Rigidbody2D rd;
+    [SerializeField] public float speed = 250f;
     void Start()
     {
         rd = GetComponent<Rigidbody2D>();
+        MoveInRandomDirection();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            rd.AddForce(Vector2.left * 100);
-        }
-    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -31,4 +25,16 @@ public class Ball : MonoBehaviour
         }
     }
 
+    public void MoveInRandomDirection()
+    {
+        // Choose base direction: left or right (add also a little bit of  angle)
+        Vector2 baseDirection = Random.value > 0.5f ? Vector2.left : Vector2.right;
+
+        float yOffset = Random.Range(-0.5f, 0.5f);
+
+        Vector2 angledDirection = new Vector2(baseDirection.x, yOffset).normalized;
+
+        // Apply force
+        this.rd.AddForce(angledDirection * speed);
+    }
 }
