@@ -92,6 +92,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Pause/Resume",
+                    "type": "Button",
+                    "id": "39d7c7ae-4693-4732-b220-0a15c753143e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -103,6 +112,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PlayAgain",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d4ad019-bd64-47b8-a8b2-c9f6a5efc78e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause/Resume",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
