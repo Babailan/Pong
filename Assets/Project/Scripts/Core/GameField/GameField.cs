@@ -20,6 +20,7 @@ public class GameField : MonoBehaviour
     void Start()
     {
         StartGame();
+        Debug.Log("gameplay start");
         playAgainAction = InputSystem.actions.FindAction("PlayAgain");
         pauseAndResumeAction = InputSystem.actions.FindAction("Pause/Resume");
     }
@@ -85,12 +86,13 @@ public class GameField : MonoBehaviour
         score = 0;
         isPlaying = true;
         isPause = false;
+        Time.timeScale = 1f;
         EnablePlayerControl();
         resultOverlayScreen.SetActive(false);
         SpawnBall();
     }
 
-    void EitherPauseResumeGame()
+    public void EitherPauseResumeGame()
     {
         if (isPause)
         {

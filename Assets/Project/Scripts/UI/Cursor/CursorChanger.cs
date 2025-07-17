@@ -16,4 +16,8 @@ public class CursorChanger : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         Cursor.SetCursor(null, Vector2.zero, cursorMode);
     }
+    void OnDisable()
+    {
+        Cursor.SetCursor(null, Vector2.zero, cursorMode);
+    }
 }
