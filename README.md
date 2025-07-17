@@ -4,3 +4,12 @@ A unique twist on the classic Pong game where you control both paddles. Unlike t
 
 
 ![Pong Gameplay](PongGamePlay.gif)
+
+
+## Download
+
+You can get the binary here : [Download](https://github.com/Babailan/Pong/releases)
+
+## License
+
+[MIT]()
