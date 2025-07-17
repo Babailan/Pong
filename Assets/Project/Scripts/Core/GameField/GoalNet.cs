@@ -1,18 +1,16 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D))]
 public class GoalNet : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private GameObject gameField;
-    Collider2D collider2D;
+    private Collider2D collider2D;
+    private AudioSource gameOverAudio;
     void Start()
     {
         collider2D = GetComponent<Collider2D>();
-
+        gameOverAudio = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -22,6 +20,7 @@ public class GoalNet : MonoBehaviour
             Destroy(collision.gameObject);
             GameField gameFieldScript = gameField.GetComponent<GameField>();
             gameFieldScript.EndGame();
+            gameOverAudio.Play();
         }
     }
     void OnDrawGizmos()
